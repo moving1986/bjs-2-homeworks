@@ -14,22 +14,25 @@ function solveEquation(a, b, c) {
   }
 
   if(d > 0) {
-
-   arr.push = [(-b + Math.sqrt(d)) / (2*a), (-b - Math.sqrt(d)) / (2*a)];
-
-  }
+   let k1 = (-b + Math.sqrt(d)) / (2 * a);
+   let k2 = (-b - Math.sqrt(d)) / (2 * a);
+   arr.push(k1, k2);
+ }
 
   return arr;
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
 
-  let bet = percent / 100 / 12;
-  let creditBody = amount - contribution;
-  let monthPayment = creditBody * (bet + (bet / (((1 + bet) ** countMonths) - 1)));
-  let total = monthPayment * countMonths + contribution;
-  let roundedTotal =  parseFloat(total.toFixed(2));
+  let bet = parseInt(percent) / 100 / 12;
 
-  return roundedTotal;
-
+  if (isNaN(bet) || bet < 0) {
+		return `false`;
+	} else {
+			let s = amount - contribution;
+			let n = countMonths;
+			let pay = s * (bet + bet / (((1 + bet) ** n) - 1));
+			let totalAmount = (pay * n).toFixed(2);
+			return +totalAmount;
+   }
 }
