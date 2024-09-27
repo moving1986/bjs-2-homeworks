@@ -10,7 +10,6 @@ let vasya = new Student("Василий", "Мужской", 22);
 
 Student.prototype.setSubject = function (subjectName) {
     this.subject = subjectName;
-
 }
 
 Student.prototype.addMarks = function (...marks) {
@@ -31,7 +30,6 @@ Student.prototype.getAverage = function () {
         }
         return sum / this.marks.length
     }
-
 }
 
 Student.prototype.exclude = function (reason) {
